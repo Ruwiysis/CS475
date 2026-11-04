@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.SalahCompanion"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorOnSecondary">@color/text_primary</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
+    <style name="Theme.SalahCompanion"
+        parent="Base.Theme.SalahCompanion" />
+    <style name="ArabicText">
+        <item name="android:textSize">@dimen/text_arabic</item>
+        <item name="android:textDirection">rtl</item>
+        <item name="android:gravity">end</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+    </style>
+
+</resources>

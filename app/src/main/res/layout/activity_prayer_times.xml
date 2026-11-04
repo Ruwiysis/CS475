@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prayer Times | مواقيت الصلاة"
+            android:textColor="@color/primary"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingBottom="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your city"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:paddingBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/citySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/nextPrayerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next Prayer:"
+            android:textColor="@color/primary"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:padding="18dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white" />
+
+        <TableLayout
+            android:id="@+id/prayerTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1"
+            android:background="@color/white"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</ScrollView>

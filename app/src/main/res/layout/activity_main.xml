@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Salah Companion"
+            android:textColor="@color/primary"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingBottom="18dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp">
+
+            <TextView
+                android:id="@+id/nextPrayerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Next Prayer"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:padding="22dp"
+                android:background="@color/primary" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp">
+
+            <TextView
+                android:id="@+id/prayerProgressText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Today's Prayer Progress"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp"
+                android:padding="18dp"
+                android:background="@color/white" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your Progress"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingBottom="12dp" />
+
+                <TextView
+                    android:id="@+id/streakText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🔥 0 Day Streak"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+                <TextView
+                    android:id="@+id/xpText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="⭐ 0 XP"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+                <TextView
+                    android:id="@+id/levelText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Level 1"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:padding="4dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Explore"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnPrayerTimes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prayer Times"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnPrayerTracker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prayer Tracker"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnLearnSalah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Learn Salah"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnAthkar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Athkar"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnFlashcards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flashcards"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quiz"
+            android:backgroundTint="@color/primary"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</ScrollView>

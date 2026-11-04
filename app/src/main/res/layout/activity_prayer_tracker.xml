@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prayer Tracker"
+        android:textColor="@color/primary"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:paddingBottom="16dp" />
+
+    <EditText
+        android:id="@+id/prayerDateInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date (yyyy-MM-dd)"
+        android:inputType="date"
+        android:singleLine="true"
+        android:padding="12dp" />
+
+    <Spinner
+        android:id="@+id/prayerNameSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:entries="@array/prayer_names" />
+
+    <Spinner
+        android:id="@+id/prayerStatusSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:entries="@array/prayer_statuses" />
+
+    <Button
+        android:id="@+id/addPrayerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Prayer Record"
+        android:backgroundTint="@color/primary"
+        android:textColor="@color/white" />
+
+    <SearchView
+        android:id="@+id/prayerSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search by prayer or date"
+        android:iconifiedByDefault="false" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prayer History"
+        android:textColor="@color/primary"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/prayerLogsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+
+</LinearLayout>
