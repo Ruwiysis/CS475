@@ -16,7 +16,78 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+    private Dhikr cursorToDhikr(Cursor c) {
+        return new Dhikr(c.getInt(0), c.getString(1), c.getString(2),
+                c.getString(3), c.getString(4), c.getInt(5));
+    }
 
+    // INSERT
+    public boolean insertFavorite(int athkarId) {
+        if (isFavorite(athkarId)) return false;
+        ContentValues v = new ContentValues();
+        v.put("athkar_id", athkarId);
+        v.put("saved_at", new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm",
+                java.util.Locale.ENGLISH).format(new java.util.Date()));
+        return getWritableDatabase().insert("athkar_favorites", null, v) != -1;
+    }
+
+    // DELETE
+    public boolean deleteFavorite(int athkarId) {
+        return getWritableDatabase().delete("athkar_favorites", "athkar_id = ?",
+                new String[]{String.valueOf(athkarId)}) > 0;
+    }
+
+    // SELECT ALL (favourites, joined with the athkar table)
+    public ArrayList<Dhikr> getAllFavorites() {
+        ArrayList<Dhikr> list = new ArrayList<>();
+        Cursor c = getReadableDatabase().rawQuery(
+                "SELECT a.id, a.category, a.arabic_text, a.transliteration, a.meaning, a.repeat_count " +
+                        "FROM athkar a JOIN athkar_favorites f ON a.id = f.athkar_id " +
+                        "ORDER BY f.id DESC", null);
+        try {
+            while (c.moveToNext()) list.add(cursorToDhikr(c));
+        } finally {
+            c.close();
+        }
+        return list;
+    }
+
+    // SEARCH
+    public ArrayList<Dhikr> searchAthkar(String q) {
+        ArrayList<Dhikr> list = new ArrayList<>();
+        String like = "%" + q + "%";
+        Cursor c = getReadableDatabase().rawQuery(
+                "SELECT * FROM athkar WHERE arabic_text LIKE ? OR transliteration LIKE ? OR meaning LIKE ? ORDER BY id",
+                new String[]{like, like, like});
+        try {
+            while (c.moveToNext()) list.add(cursorToDhikr(c));
+        } finally {
+            c.close();
+        }
+        return list;
+    }
+
+    public boolean isFavorite(int athkarId) {
+        Cursor c = getReadableDatabase().rawQuery(
+                "SELECT id FROM athkar_favorites WHERE athkar_id = ?",
+                new String[]{String.valueOf(athkarId)});
+        try {
+            return c.getCount() > 0;
+        } finally {
+            c.close();
+        }
+    }
+
+    public ArrayList<Integer> getFavoriteIds() {
+        ArrayList<Integer> ids = new ArrayList<>();
+        Cursor c = getReadableDatabase().rawQuery("SELECT athkar_id FROM athkar_favorites", null);
+        try {
+            while (c.moveToNext()) ids.add(c.getInt(0));
+        } finally {
+            c.close();
+        }
+        return ids;
+    }
     // ===================== MEMBER 2 =====================
 
     private void addStep(SQLiteDatabase db, int order, String title, String arabic,
