@@ -45,7 +45,7 @@ public class PrayerTrackerActivity extends AppCompatActivity
         RecyclerView recyclerView = findViewById(R.id.prayerLogsRecyclerView);
 
         String today = new SimpleDateFormat(
-                "yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                "yyyy-MM-dd", Locale.ENGLISH).format(new Date());
         dateInput.setText(today);
 
         adapter = new PrayerLogAdapter(log ->
@@ -127,6 +127,28 @@ public class PrayerTrackerActivity extends AppCompatActivity
                 StatsManager.addXp(this, 10);
             } else if ("late".equals(status)) {
                 StatsManager.addXp(this, 5);
+            }
+
+            // Update the streak when all five prayers of today are prayed
+            String todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+                    .format(new Date());
+            if (date.equals(todayDate) && !"missed".equals(status)) {
+                Cursor countCursor = db.rawQuery(
+                        "SELECT COUNT(*) FROM prayer_log " +
+                                "WHERE date = ? AND status IN ('on_time', 'late')",
+                        new String[]{todayDate});
+                int prayedToday = 0;
+                if (countCursor.moveToFirst()) {
+                    prayedToday = countCursor.getInt(0);
+                }
+                countCursor.close();
+
+                if (prayedToday == 5) {
+                    StatsManager.onDayCompleted(this, todayDate);
+                    Toast.makeText(this, "All 5 prayers done! Streak: "
+                                    + StatsManager.getStreak(this) + " day(s)",
+                            Toast.LENGTH_LONG).show();
+                }
             }
 
             Toast.makeText(this, "Prayer record added!",
