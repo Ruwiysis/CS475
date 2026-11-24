@@ -1,4 +1,3 @@
-
 package com.cs475.salahcompanion;
 
 import android.content.Intent;
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         String today = new SimpleDateFormat(
                 "yyyy-MM-dd",
-                Locale.getDefault()
+                Locale.ENGLISH
         ).format(new Date());
 
         int completed = 0;
@@ -109,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 String status = cursor.getString(0);
 
-                if ("On Time".equalsIgnoreCase(status)
-                        || "Late".equalsIgnoreCase(status)) {
+                if ("on_time".equals(status)
+                        || "late".equals(status)) {
                     completed++;
                 }
             }
@@ -175,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String formattedTime = new SimpleDateFormat(
                         "hh:mm a",
-                        Locale.getDefault()
+                        Locale.ENGLISH
                 ).format(nextPrayerTime);
 
                 nextPrayerText.setText(
